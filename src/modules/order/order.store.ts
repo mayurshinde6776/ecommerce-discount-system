@@ -65,6 +65,16 @@ export class OrderStore {
     return [...this.orders.values()].filter((o) => o.status === status);
   }
 
+  /**
+   * Returns the number of CONFIRMED orders for a given user.
+   * Used by DiscountService to determine every-5th-order reward eligibility.
+   */
+  countConfirmedByUserId(userId: string): number {
+    return this.findByUserId(userId).filter(
+      (o) => o.status === OrderStatus.CONFIRMED,
+    ).length;
+  }
+
   getAll(): Order[] {
     return [...this.orders.values()];
   }
