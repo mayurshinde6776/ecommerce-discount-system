@@ -8,6 +8,7 @@ import { errorHandler, notFoundHandler } from './middlewares';
 import { healthRouter } from './modules/health';
 import { cartRouter } from './modules/cart';
 import { checkoutRouter } from './modules/checkout';
+import { adminRouter } from './modules/admin';
 
 /**
  * Factory function that creates and configures the Express application.
@@ -31,6 +32,7 @@ export const createApp = (): Application => {
   app.use('/health', healthRouter);
   app.use('/api/v1/cart', cartRouter);
   app.use('/api/v1/checkout', checkoutRouter);
+  app.use('/admin', adminRouter);
 
   // TODO: Register domain routers here as they are implemented
   // app.use('/api/v1/discounts', discountRouter);
